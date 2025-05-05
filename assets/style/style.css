@@ -161,7 +161,7 @@ header {
 /* Hero Section */
 .hero {
     height: 100vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1589391886645-d51941baf7fb?q=80&w=1500');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../images/martelo.webp');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
