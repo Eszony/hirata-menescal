@@ -127,6 +127,7 @@ header {
 
 .logo {
     width: 18rem;
+    height: auto;
 }
 
 .nav-links {
