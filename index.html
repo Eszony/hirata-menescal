@@ -403,7 +403,11 @@
                 <div class="contact-form" data-aos="fade-up">
                     <h3>Envie uma Mensagem</h3>
                     
-                    <form id="contact-form">
+                    <form action="https://api.web3forms.com/submit" method="POST" id="contact-form">
+
+                        <!-- Replace with your Access Key -->
+                        <input type="hidden" name="access_key" value="849f728f-a712-4182-8269-78eda938227d">
+
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="name">Nome</label>
@@ -428,6 +432,10 @@
                         <button type="submit" class="btn btn-primary">
                             Enviar Mensagem
                         </button>
+
+                        <!-- Honeypot Spam Protection -->
+                        <input type="text" name="honeypot" style="display:none">
+
                     </form>
                 </div>
                 
