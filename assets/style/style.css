@@ -776,7 +776,7 @@ textarea.form-control {
     }
   
     .contact-grid {
-      padding: 0 1rem;
+      padding: 0;
       box-sizing: border-box;
     }
   
