@@ -138,6 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   showSlide(current); // inicializa
+  pausarVideosInativos();
 });
 
 function pausarVideosInativos() {
