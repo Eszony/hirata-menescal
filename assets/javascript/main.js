@@ -121,11 +121,13 @@ document.addEventListener("DOMContentLoaded", () => {
   nextBtn.addEventListener("click", () => {
     current = (current + 1) % slides.length;
     showSlide(current);
+    pausarVideosInativos();
   });
 
   prevBtn.addEventListener("click", () => {
     current = (current - 1 + slides.length) % slides.length;
     showSlide(current);
+    pausarVideosInativos();
   });
 
   bullets.forEach((bullet, index) => {
@@ -137,3 +139,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   showSlide(current); // inicializa
 });
+
+function pausarVideosInativos() {
+  const items = document.querySelectorAll('.item-box');
+
+  items.forEach(item => {
+    const video = item.querySelector('video');
+    if (video) {
+      if (item.classList.contains('active')) {
+        video.play(); // Garante que o vídeo ativo continue rodando
+      } else {
+        video.pause(); // Pausa os vídeos dos slides inativos
+        video.currentTime = 0; // (opcional) reinicia o vídeo
+      }
+    }
+  });
+}
