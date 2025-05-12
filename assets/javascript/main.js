@@ -102,3 +102,38 @@
         });
     }
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const slides = document.querySelectorAll(".item-box");
+  const prevBtn = document.querySelector(".btn-prev");
+  const nextBtn = document.querySelector(".btn-next");
+  const bullets = document.querySelectorAll(".btn-galeria");
+
+  let current = 0;
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.toggle("active", i === index);
+      bullets[i].classList.toggle("active", i === index);
+    });
+  }
+
+  nextBtn.addEventListener("click", () => {
+    current = (current + 1) % slides.length;
+    showSlide(current);
+  });
+
+  prevBtn.addEventListener("click", () => {
+    current = (current - 1 + slides.length) % slides.length;
+    showSlide(current);
+  });
+
+  bullets.forEach((bullet, index) => {
+    bullet.addEventListener("click", () => {
+      current = index;
+      showSlide(current);
+    });
+  });
+
+  showSlide(current); // inicializa
+});

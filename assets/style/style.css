@@ -19,7 +19,12 @@ body {
     overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: 'Cormorant Garamond', serif;
     margin-bottom: 0.5rem;
 }
@@ -367,7 +372,7 @@ header {
     position: absolute;
     width: 100%;
     height: 90%;
-    background: linear-gradient(90deg,rgba(255, 255, 255, 1) 0%, rgba(252, 176, 69, 1) 100%);
+    background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(252, 176, 69, 1) 100%);
     border-radius: 10px;
     padding: 1rem;
 }
@@ -413,88 +418,160 @@ header {
     color: var(--primary-color);
 }
 
-/* Clientes */
-.clients-section {
+/* Galeria */
+/* GALERIA SLIDE COMPLETO */
+.galeria-section {
     text-align: center;
+    position: relative;
 }
 
-.clients-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 2rem;
-    margin-bottom: 4rem;
+.interface {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
 }
 
-.client-logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
-    filter: grayscale(100%);
-    transition: all 0.3s ease;
-    background-color: #f8f9fa;
-    border-radius: 0.5rem;
-    height: 100px;
-}
-
-.client-logo:hover {
-    filter: grayscale(0);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-}
-
-.testimonials-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
-}
-
-.testimonial-card {
-    background-color: var(--light-color);
-    padding: 2rem;
+.galeria {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    margin-top: 3rem;
     border-radius: 0.5rem;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
-.quote-icon {
-    font-size: 2.5rem;
-    color: var(--secondary-color);
-    margin-bottom: 1rem;
-}
-
-.testimonial-text {
-    color: #555;
-    font-style: italic;
-    margin-bottom: 1.5rem;
-}
-
-.client-info {
+.item-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.6s ease-in-out;
     display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    color: white;
 }
 
-.client-avatar {
-    width: 50px;
-    height: 50px;
-    background-color: #ddd;
+.item-box.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.item-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.item-box h2,
+.item-box p {
+    position: relative;
+    z-index: 1;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+.item-box h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.item-box p {
+    font-size: 1rem;
+}
+
+.item-info {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    text-align: left;
+    z-index: 1;
+}
+
+.item-info h2,
+.item-info p {
+    margin: 0;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+@media (max-width: 768px) {
+    .item-info {
+        display: none;
+    }
+}
+
+
+/* Botões laterais */
+.btn-prev,
+.btn-next {
+    position: absolute;
+    top: calc(50% - 18px);
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 1rem;
-    font-weight: bold;
-    color: #555;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 2;
+    transition: all 0.3s;
 }
 
-.client-details h4 {
-    font-weight: bold;
-    color: var(--primary-color);
-    margin-bottom: 0.25rem;
+.btn-prev:hover,
+.btn-next:hover {
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
-.client-position {
-    color: #777;
-    font-size: 0.875rem;
+.btn-prev {
+    left: 2rem;
 }
+
+.btn-next {
+    right: 2rem;
+}
+
+/* Botões de navegação inferiores */
+.nav-btn-galeria {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+.btn-galeria {
+    width: 12px;
+    height: 12px;
+    background-color: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-galeria.active {
+    background-color: var(--secondary-color);
+    width: 20px;
+    border-radius: 999px;
+}
+
 
 /* Contato */
 .contact-grid {
@@ -682,7 +759,7 @@ textarea.form-control {
 
 /* Responsividade */
 @media (min-width: 769px) {
-    .mobile-nav{
+    .mobile-nav {
         display: none;
     }
 }
@@ -691,11 +768,11 @@ textarea.form-control {
     .hero h1 {
         font-size: 2.5rem;
     }
-    
+
     .hero p {
         font-size: 1.1rem;
     }
-    
+
     .section-title h2 {
         font-size: 2.2rem;
     }
@@ -709,11 +786,11 @@ textarea.form-control {
     .nav-links {
         display: none;
     }
-    
+
     .mobile-toggle {
         display: block;
     }
-    
+
     .mobile-nav {
         position: fixed;
         top: 70px;
@@ -724,39 +801,39 @@ textarea.form-control {
         display: none;
         z-index: 999;
     }
-    
+
     .mobile-nav.active {
         display: block;
     }
-    
+
     .mobile-nav a {
         display: block;
         color: white;
         padding: 0.75rem 0;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
-    
+
     .mobile-nav a:last-child {
         border-bottom: none;
     }
-    
+
     .form-row {
         grid-template-columns: 1fr;
         gap: 1rem;
     }
-    
+
     .footer-bottom {
         flex-direction: column;
         text-align: center;
         gap: 1rem;
     }
-    
+
     .hero-buttons {
         flex-direction: column;
         align-items: center;
         width: 100%;
     }
-    
+
     .hero-buttons .btn {
         width: 100%;
         max-width: 300px;
@@ -769,32 +846,33 @@ textarea.form-control {
 
 @media (max-width: 425px) {
     .contact-form {
-      padding: 1rem;
-      box-sizing: border-box;
-      width: 100%;
-      max-width: 100%;
+        padding: 1rem;
+        box-sizing: border-box;
+        width: 100%;
+        max-width: 100%;
     }
-  
+
     .contact-grid {
-      padding: 0;
-      box-sizing: border-box;
+        padding: 0;
+        box-sizing: border-box;
     }
-  
+
     .info-card,
     .map-container {
-      width: 100%;
-      max-width: 100%;
-      overflow-x: hidden;
-      box-sizing: border-box;
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+        box-sizing: border-box;
     }
-  
-    iframe {
-      width: 100%;
-      max-width: 100%;
-      display: block;
-    }
-  }
 
-html, body {
+    iframe {
+        width: 100%;
+        max-width: 100%;
+        display: block;
+    }
+}
+
+html,
+body {
     overflow-x: hidden;
 }
